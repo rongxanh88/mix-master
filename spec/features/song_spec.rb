@@ -4,7 +4,7 @@ RSpec.features "Song Navigation" do
   include Capybara::DSL
 
   before(:each) do
-    Artist.create!(name: "Bob Marley", image_path: "http://cps-static.rovicorp.com/3/JPG_400/MI0003/146/MI0003146038.jpg")
+    create(:artist)
 
     song1, song2, song3 = create_list(:song, 3)
   end
@@ -32,5 +32,17 @@ RSpec.features "Song Navigation" do
     expect(page).to have_current_path("/songs/#{song.id}")
     expect(page).to have_content("Just another high day.")
     expect(page).to have_link artist.name, href: artist_path(artist)
+  end
+
+  describe "I can view all songs by artist" do
+    artist = Artist.first
+    song1, song2, song3 = create_list(:song, 3)
+
+    visit('/artists')
+    click_on(artist.name)
+    
+    expect(page).to have_content(song1.title)
+    expect(page).to have_content(song2.title)
+    expect(page).to have_content(song3.title)
   end
 end
