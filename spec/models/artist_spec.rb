@@ -55,4 +55,30 @@ RSpec.describe Artist, type: :model do
 
     expect(page).to have_content("Name can't be blank")
   end
+
+  it "shows an artist's individual page" do
+    artist = Artist.last
+
+    visit('/artists')
+    click_on(artist.name)
+
+    expect(page).to have_content(artist.name)
+    expect(page).to have_content(artist.image_path)
+  end
+
+  it "edits an artist" do
+    artist = Artist.last
+
+    visit('/artists')
+    click_on(artist.name)
+    expect(page).to have_current_path("/artists/#{artist.id}")
+    click_on("Edit Artist")
+    fill_in("artist[name]", with: "Famous Person")
+    fill_in("artist[image_path]", with: "http://www.image.com/famous")
+    click_on('Update Artist')
+    
+    expect(page).to have_current_path("/artists/#{artist.id}")
+    expect(page).to have_content("Famous Person")
+    expect(page).to have_content("http://www.image.com/famous")
+  end
 end
