@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Artist, type: :model do
+RSpec.feature "Artist Navigation" do
   include Capybara::DSL
 
   before(:each) do

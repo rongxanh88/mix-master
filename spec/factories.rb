@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :song do
+    
+  end
+  
   factory :artist do
     sequence :name do |n|
       "Person#{n}"
