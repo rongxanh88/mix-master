@@ -15,10 +15,15 @@ RSpec.describe Artist, type: :model do
 
 
   it "tests the index page" do
+    artist1, artist2, artist3 = create_list(:artist, 3)
+
     visit('/artists')
     expect(page).to have_current_path('/artists')
     expect(page).to have_content('Artist List')
     expect(page).to have_content('Bob Marley')
+    expect(page).to have_content(artist1.name)
+    expect(page).to have_content(artist2.name)
+    expect(page).to have_content(artist3.name)
   end
 
   it "can add a new artist" do
