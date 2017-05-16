@@ -1,0 +1,8 @@
+%div
+  %h2 Artist List
+  %br
+  = link_to "Create New Artist", new_artist_path
+  %br
+  - @artists.each do |artist|
+    %p= artist.name
+    %p= artist.image_path

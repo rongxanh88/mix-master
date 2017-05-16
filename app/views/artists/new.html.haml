@@ -1,0 +1,16 @@
+%h2 New Artist
+%br
+= link_to "Back to Artists", artists_path
+%br
+
+= form_for @artist do |f|
+  %p
+  = f.label :name
+  %br
+  = f.text_field :name
+  %p 
+  = f.label :image_path
+  %br
+  = f.text_field :image_path
+  %p 
+  = f.submit
