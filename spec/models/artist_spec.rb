@@ -28,7 +28,7 @@ RSpec.describe Artist, type: :model do
     click_on('Create Artist')
 
     created_artist = Artist.find_by(name: artist)
-    expect(page).to have_current_path("/artists")
+    expect(page).to have_current_path("/artists/#{created_artist.id}")
     expect(page).to have_content(artist)
     expect(page).to have_content(image_link)
   end
