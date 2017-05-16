@@ -81,4 +81,15 @@ RSpec.describe Artist, type: :model do
     expect(page).to have_content("Famous Person")
     expect(page).to have_content("http://www.image.com/famous")
   end
+
+  it "deletes an artist" do
+    artist = Artist.last
+
+    visit('/artists')
+    click_on(artist.name)
+    click_on("Delete")
+
+    expect(page).to have_current_path("/artists")
+    expect(page).not_to have_content(artist.name)
+  end
 end

@@ -7,3 +7,5 @@
   = @artist.image_path
 %br
 = link_to "Edit Artist", edit_artist_path(@artist)
+%br
+= link_to "Delete", artist_path(@artist), :method => :delete
