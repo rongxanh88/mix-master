@@ -27,5 +27,6 @@ RSpec.describe Artist, type: :model do
 
     expect(page).to have_current_path('/artists/2')
     expect(page).to have_content(artist)
+    expect(page).to have_css("img[src=\"#{image_link}\"]")
   end
 end
