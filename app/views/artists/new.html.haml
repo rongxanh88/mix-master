@@ -4,6 +4,7 @@
 %br
 
 = form_for @artist do |f|
+  = create_artist_error?(@artist)
   %p
   = f.label :name
   %br
