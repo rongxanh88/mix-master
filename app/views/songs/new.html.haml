@@ -1,0 +1,13 @@
+%h2 New Song
+%br
+= link_to "Back to Artist", artist_path(@artist)
+%br
+
+= form_for @song do |f|
+  = f.hidden_field :artist_id, :value => @artist.id
+  %p
+  = f.label :title
+  %br
+  = f.text_field :title
+  %p
+  = f.submit

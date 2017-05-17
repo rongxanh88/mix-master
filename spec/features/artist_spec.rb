@@ -55,7 +55,6 @@ RSpec.describe Artist, type: :model do
 
     fill_in('artist[image_path]', with: image_link)
     click_on('Create Artist')
-
     expect(page).to have_content("Name can't be blank")
   end
 

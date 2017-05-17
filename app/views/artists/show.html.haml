@@ -9,6 +9,8 @@
   %h3 Artist Songs
   - @artist.songs.each do |song|
     %p= song.title
+  %br
+  = link_to "New Song", new_artist_song_path(@artist)
 %br
 = link_to "Edit Artist", edit_artist_path(@artist)
 %br
