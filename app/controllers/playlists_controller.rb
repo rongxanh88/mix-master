@@ -10,8 +10,8 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = Playlist.new(playlist_params)
-    binding.pry
+    @playlist = Playlist.create!(playlist_params)
+    redirect_to playlists_path
   end
 
   private

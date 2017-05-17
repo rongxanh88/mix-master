@@ -28,16 +28,17 @@ RSpec.describe Playlist, type: :model do
   end
 
   it "allows me to create a new playlist" do
+    song1 = Song.first
+    song2 = Song.last
     visit('/playlists')
     click_on('Create New Playlist')
-  end
-
-  it "does not allow me to create an empty playlist" do
-
-  end
-
-  it "allows me to go to individual song pages" do
-
+    fill_in('playlist_name', with: "First")
+    check("song-#{song1.id}")
+    check("song-#{song2.id}")
+    click_on('Create Playlist')
+    
+    expect(page).to have_current_path('/playlists')
+    expect(page).to have_content('First')
   end
 end
 

@@ -4,7 +4,6 @@
   = link_to "Create New Playlist", new_playlist_path
   %br
   - @playlists.each do |playlist|
-    %div
-    -playlist.songs.each do |song|
-      %p= link_to song.title, song_path(song)
+    %p
+    =playlist.name
 
