@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :song do
-    factory :song do
-      title "A New Hope"
-    end
+
+    title "A New Hope"
 
     sequence :title do |n|
       "Song#{n}"
@@ -10,10 +9,6 @@ FactoryGirl.define do
   end
   
   factory :artist do
-    factory :artist do
-      name "Bob Marley"
-      image_path "http://cps-static.rovicorp.com/3/JPG_400/MI0003/146/MI0003146038.jpg"
-    end
 
     sequence :name do |n|
       "Person#{n}"
@@ -24,3 +19,6 @@ FactoryGirl.define do
     end
   end
 end
+
+# activation_code { User.generate_activation_code }
+#   date_of_birth   { 21.years.ago }
