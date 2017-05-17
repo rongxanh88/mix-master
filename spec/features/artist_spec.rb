@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Artist :model do
+RSpec.describe Artist, type: :model do
   include Capybara::DSL
 
   before(:each) do

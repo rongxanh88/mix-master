@@ -1,8 +1,5 @@
 FactoryGirl.define do
   factory :song do
-
-    title "A New Hope"
-
     sequence :title do |n|
       "Song#{n}"
     end

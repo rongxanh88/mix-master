@@ -1,21 +1,26 @@
 require 'rails_helper'
 
-RSpec.feature "Song Navigation" do
+RSpec.describe Song, type: :model do
   include Capybara::DSL
 
   before(:each) do
-    create(:artist)
+    artist = Artist.create!(
+      name: "Bob Marley",
+      image_path: "http://cps-static.rovicorp.com/3/JPG_400/MI0003/146/MI0003146038.jpg"
+      )
 
-    song1, song2, song3 = create_list(:song, 3)
+    artist.songs.create!(title:"Hello")
+    artist.songs.create!(title:"World")
+    artist.songs.create!(title:"Anybody?")
   end
 
   it "I can see songs index for an artist" do
+    artist = Artist.first
     visit('/artists')
     click_on("Bob Marley")
 
-    expect(page).to have_content(song1.title)
-    expect(page).to have_content(song2.title)
-    expect(page).to have_content(song3.title)
+    expect(page).to have_content(artist.songs.first.title)
+    expect(page).to have_content(artist.songs.last.title)
   end
 
   it "I can add a new song" do
@@ -36,13 +41,11 @@ RSpec.feature "Song Navigation" do
 
   it "I can view all songs by artist" do
     artist = Artist.first
-    song1, song2, song3 = create_list(:song, 3)
 
     visit('/artists')
     click_on(artist.name)
     
-    expect(page).to have_content(song1.title)
-    expect(page).to have_content(song2.title)
-    expect(page).to have_content(song3.title)
+    expect(page).to have_content(artist.songs.first.title)
+    expect(page).to have_content(artist.songs.last.title)
   end
 end
