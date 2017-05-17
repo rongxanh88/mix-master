@@ -44,7 +44,7 @@ RSpec.describe Artist, type: :model do
     created_artist = Artist.find_by(name: artist)
     expect(page).to have_current_path("/artists/#{created_artist.id}")
     expect(page).to have_content(artist)
-    expect(page).to have_content(image_link)
+    expect(page).to have_css("img[src=\"#{image_link}\"]")
   end
 
   it "gets error when entering no name" do
@@ -66,23 +66,24 @@ RSpec.describe Artist, type: :model do
     click_on(artist.name)
 
     expect(page).to have_content(artist.name)
-    expect(page).to have_content(artist.image_path)
+    expect(page).to have_css("img[src=\"#{artist.image_path}\"]")
   end
 
   it "edits an artist" do
     artist = Artist.last
+    link = "http://www.image.com/famous"
 
     visit('/artists')
     click_on(artist.name)
     expect(page).to have_current_path("/artists/#{artist.id}")
     click_on("Edit Artist")
     fill_in("artist[name]", with: "Famous Person")
-    fill_in("artist[image_path]", with: "http://www.image.com/famous")
+    fill_in("artist[image_path]", with: link)
     click_on('Update Artist')
     
     expect(page).to have_current_path("/artists/#{artist.id}")
     expect(page).to have_content("Famous Person")
-    expect(page).to have_content("http://www.image.com/famous")
+    expect(page).to have_css("img[src=\"#{link}\"]")
   end
 
   it "deletes an artist" do

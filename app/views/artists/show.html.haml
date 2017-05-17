@@ -4,7 +4,11 @@
 %h2
   = @artist.name
 %p
-  = @artist.image_path
+  %img{:src => @artist.image_path}
+%div
+  %h3 Artist Songs
+  - @artist.songs.each do |song|
+    %p= song.title
 %br
 = link_to "Edit Artist", edit_artist_path(@artist)
 %br
