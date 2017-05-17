@@ -1,0 +1,17 @@
+%h2 New Playlist
+%br
+= link_to "Back to Playlists", playlists_path
+%br
+%h3 Add a new playlist
+
+= form_for (@playlist) do |f|
+  %p
+  = f.label :name
+  %br
+  = f.text_field :name
+  %div
+    - @songs.each do |song|
+      = check_box_tag(:song_ids, song.id, false, :name => "playlist[song_ids][]",id: "song-#{song.id}")
+      = song.title
+      %br
+  = f.submit

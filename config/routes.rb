@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   end
 
   resources :songs
+
+  resources :playlists
 end

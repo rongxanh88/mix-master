@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :playlist do
+    
+  end
+  
   factory :song do
     sequence :title do |n|
       "Song#{n}"
@@ -14,8 +18,6 @@ FactoryGirl.define do
     sequence :image_path do |n|
       "http://www.image#{n}.com"
     end
+
   end
 end
-
-# activation_code { User.generate_activation_code }
-#   date_of_birth   { 21.years.ago }
