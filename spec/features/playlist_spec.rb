@@ -40,3 +40,8 @@ RSpec.describe Playlist, type: :model do
 
   end
 end
+
+RSpec.describe Playlist, "associations", type: :model do
+  it { should have_many(:playlist_songs)}
+  it { should have_many(:songs).through(:playlist_songs) }
+end
